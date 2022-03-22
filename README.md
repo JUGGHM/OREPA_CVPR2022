@@ -6,24 +6,32 @@ Mu Hu, Junyi Feng, Jiashen Hua, Baisheng Lai, Jianqiang Huang, [Xiaojin Gong](ht
 + Re-parameterization (Re-param) means different architectures can be mutually converted through equivalent transformation of parameters. For example, a branch of 1x1 convolution and a branch of 3x3 convolution, can be transferred into a single branch of 3x3 convolution for faster inference.
 + When the model for deployment is fixed, the task of re-param can be regarded as finding a complex training-time structure, which can be transfered back to the original one, for free performance improvements.
 
-## Why we propose Online RE-PAram? (OREPA)
-+ While
-+ .
+## Why do we propose Online RE-PAram? (OREPA)
++ While current re-param blocks ([ACNet](https://github.com/DingXiaoH/ACNet), [ExpandNet](https://github.com/GUOShuxuan/expandnets), [ACNetv2](https://github.com/DingXiaoH/DiverseBranchBlock), *etc*) are still feasible for small models, more complecated design for further performance gain on larger models could lead to unaffordable training budgets.
++ We observed that batch **normalization** (norm) layers are significant in re-param blocks, while their training-time non-linearity prevents us from optimizing computational costs during training.
 
-## Results
+## What is OREPA?
+OREPA is a two-step pipeline.
++ Linearization: Replace the branch-wise norm layers to scaling layers to enable the linear squeezing of a multi-branch/layer topology.
++ Squeezing: Squeeze the linearized block into a single layer, where the convolution upon feature maps is reduced from multiple times to one.
+
+## How does OREPA work?
++ Through OREPA we could reduce the training budgets while keeping a comparable performance. Then we improve accuracy by additional components, which brings minor extra training costs since they are merged in an online scheme.
++ The replacement of 
+
+## ImageNet Results
 +
 
 Create a new issue for any code-related questions. Feel free to direct me as well at muhu@zju.edu.cn for any paper-related questions.
 
-## Method
-
-
 ## Contents
 1. [Dependency](#dependency)
-0. [Data](#data)
-0. [Trained Models](#trained-models)
-0. [Commands](#commands)
-0. [Citation](#citation)
+2. [Checkpoints](#trained-models)
+3. [Evaluation](#commands)
+4. [](#commands)
+
+3. [Commands](#commands)
+4. [Citation](#citation)
 
 
 ## Dependency
@@ -41,9 +49,17 @@ pip install opencv-contrib-python==3.4.2.17
 ```
 
 ## Trained Models
-Download our pre-trained models:
-- PENet (*i.e.*, the proposed full model with dilation_rate=2): [Download Here](https://drive.google.com/file/d/1RDdKlKJcas-G5OA49x8OoqcUDiYYZgeM/view?usp=sharing)
-- ENet (*i.e.*, the backbone): [Download Here](https://drive.google.com/file/d/1TRVmduAnrqDagEGKqbpYcKCT307HVQp1/view?usp=sharing)
+Download our pre-trained models with OREPA:
+- [ResNet-18]()
+- [ResNet-34]()
+- [ResNet-50]()
+- [ResNet-101]()
+- [RepVGG-A0]()
+- [RepVGG-A1]()
+- [RepVGG-A2]()
+- [WideResNet-18(x2)]()
+- [ResNeXt-50]()
+- [MobileNet-V1]()
 
  Note that we don't need to decompress the pre-trained models. Just load the files of .pth.tar format directly.
 
@@ -72,7 +88,7 @@ CUDA_VISIBLE_DEVICES="0" python main.py -b 1 -n pe --evaluate [penet-checkpoint-
 # test the trained model on the val_selection_cropped data
 ```
 
-### Evalution
+### Transfer Learning on COCO and Cityscapes
 ```bash
 CUDA_VISIBLE_DEVICES="0" python main.py -b 1 -n e --evaluate [enet-checkpoint-path]
 CUDA_VISIBLE_DEVICES="0" python main.py -b 1 -n pe --evaluate [penet-checkpoint-path]
