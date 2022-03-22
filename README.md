@@ -3,12 +3,10 @@ This repo is the PyTorch implementation of our paper to appear in CVPR2022 on ["
 Mu Hu, Junyi Feng, Jiashen Hua, Baisheng Lai, Jianqiang Huang, [Xiaojin Gong](https://person.zju.edu.cn/en/gongxj) and [Xiansheng Hua](https://damo.alibaba.com/labs/city-brain) from Zhejiang University and Alibaba Cloud.
 
 ## What is Structural Re-parameterization?
-+ Re-parameterization means different architectures can be mutually converted through equivalent transformation of parameters. For example, a branch of $$1\times1$$ convolution and a branch of 3$\times$3 convolution,
-can be transferred into a single branch of 3$\times$3 convolution \cite{Ding21repvgg}.
-+ TODO
-$\times\$
++ Re-parameterization (Re-param) means different architectures can be mutually converted through equivalent transformation of parameters. For example, a branch of 1x1 convolution and a branch of 3x3 convolution, can be transferred into a single branch of 3x3 convolution for faster inference.
++ An applicative scenerio of
 
-## Why we propose Online RE-PAram?
+## Why we propose __O__nline __RE__-__PA__ram?
 + .
 + .
 
