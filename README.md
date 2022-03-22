@@ -1,6 +1,6 @@
 # OREPA: Online Convolutional Re-parameterization
 This repo is the PyTorch implementation of our paper to appear in CVPR2022 on ["Online Convolutional Re-parameterization"](https://arxiv.org/abs/TODO), authored by
-Mu Hu, Junyi Feng, Jiashen Hua, Baisheng Lai, Jianqiang Huang, [Xiaojin Gong](https://person.zju.edu.cn/en/gongxj) and [Xiansheng Hua](https://damo.alibaba.com/labs/city-brain) from Zhejiang University and Alibaba Cloud.
+Mu Hu, [Junyi Feng](https://github.com/Sixkplus), Jiashen Hua, Baisheng Lai, Jianqiang Huang, [Xiaojin Gong](https://person.zju.edu.cn/en/gongxj) and [Xiansheng Hua](https://damo.alibaba.com/labs/city-brain) from Zhejiang University and Alibaba Cloud.
 
 ## What is Structural Re-parameterization?
 + Re-parameterization (Re-param) means different architectures can be mutually converted through equivalent transformation of parameters. For example, a branch of 1x1 convolution and a branch of 3x3 convolution, can be transferred into a single branch of 3x3 convolution for faster inference.
@@ -8,7 +8,7 @@ Mu Hu, Junyi Feng, Jiashen Hua, Baisheng Lai, Jianqiang Huang, [Xiaojin Gong](ht
 
 ## Why do we propose Online RE-PAram? (OREPA)
 + While current re-param blocks ([ACNet](https://github.com/DingXiaoH/ACNet), [ExpandNet](https://github.com/GUOShuxuan/expandnets), [ACNetv2](https://github.com/DingXiaoH/DiverseBranchBlock), *etc*) are still feasible for small models, more complecated design for further performance gain on larger models could lead to unaffordable training budgets.
-+ We observed that batch **normalization** (norm) layers are significant in re-param blocks, while their training-time non-linearity prevents us from optimizing computational costs during training.
++ We observed that batch normalization (norm) layers are significant in re-param blocks, while their training-time non-linearity prevents us from optimizing computational costs during training.
 
 ## What is OREPA?
 OREPA is a two-step pipeline.
@@ -17,7 +17,7 @@ OREPA is a two-step pipeline.
 
 ## How does OREPA work?
 + Through OREPA we could reduce the training budgets while keeping a comparable performance. Then we improve accuracy by additional components, which brings minor extra training costs since they are merged in an online scheme.
-+ The replacement of 
++ We theoretically present that the removal of branch-wise norm layers risks a multi-branch structure degrading into a single-branch one, indicating that the norm-scaling layer replacement is critical for protecting branch diversity.
 
 ## ImageNet Results
 +
@@ -27,28 +27,27 @@ Create a new issue for any code-related questions. Feel free to direct me as wel
 ## Contents
 1. [Dependency](#dependency)
 2. [Checkpoints](#trained-models)
-3. [Evaluation](#commands)
-4. [](#commands)
-
-3. [Commands](#commands)
-4. [Citation](#citation)
+3. [Training](#commands)
+4. [Evaluation](#commands)
+5. [Transfer Learning](#commands)
+6. [Citation](#citation)
 
 
 ## Dependency
 Our released implementation is tested on.
-+ TODO
-+ Python 3.7.4 (Anaconda 2019.10)
-+ PyTorch 1.3.1 / torchvision 0.4.2
-+ NVIDIA CUDA 10.0.130
++ CentOS Linux
++ Python 3.8.8 (Anaconda 4.9.1)
++ PyTorch TODO / torchvision TODO
++ NVIDIA CUDA 10.2
 + 4x NVIDIA V100 GPUs
 
 ```bash
+pip install torch torchvision
 pip install numpy matplotlib Pillow
 pip install scikit-image
-pip install opencv-contrib-python==3.4.2.17
 ```
 
-## Trained Models
+## Checkpoints (Pre-trained Models)
 Download our pre-trained models with OREPA:
 - [ResNet-18]()
 - [ResNet-34]()
@@ -66,35 +65,46 @@ Download our pre-trained models with OREPA:
 ## Commands
 A complete list of training options is available with
 ```bash
-python main.py -h
+python train.py -h
+python test.py -h
+python convert.py -h
 ```
 ### Training
 ![Training Pipeline](https://github.com/JUGGHM/PENet_ICRA2021/blob/main/images/Training.png "Training")
 
-Here we adopt a multi-stage training strategy to train the backbone, DA-CSPN++, and the full model progressively. However, end-to-end training is feasible as well.
-
-1. Train ENet (Part Ⅰ)
+1. Train ResNets (ResNeXt and WideResNet included)
 ```bash
-CUDA_VISIBLE_DEVICES="0,1" python main.py -b 6 -n e
-# -b for batch size
-# -n for network model
+CUDA_VISIBLE_DEVICES="0,1,2,3" python train.py -a ResNet-18 -t OREPA --data [imagenet-path]
+# -a for architecture (ResNet-18, ResNet-34, ResNet-50, ResNet-101, ResNet-18-2x, ResNeXt-50)
+# -t for re-param method (base, DBB, OREPA)
 ```
 
+2. Train RepVGGs
+```bash
+CUDA_VISIBLE_DEVICES="0,1,2,3" python train.py -a RepVGG-A0 -t OREPA_VGG --data [imagenet-path]
+# -a for architecture (RepVGG-A0, RepVGG-A1, RepVGG-A2)
+# -t for re-param method (base, RepVGG, OREPA_VGG)
+```
 
 ### Evalution
+1. Use your self-trained model or our pretrained model.
 ```bash
-CUDA_VISIBLE_DEVICES="0" python main.py -b 1 -n e --evaluate [enet-checkpoint-path]
-CUDA_VISIBLE_DEVICES="0" python main.py -b 1 -n pe --evaluate [penet-checkpoint-path]
+CUDA_VISIBLE_DEVICES="0" python test.py train [trained-model-path] -a ResNet-18 -t OREPA
 # test the trained model on the val_selection_cropped data
+```
+
+2. Convert the training-time models into inference-time
+```bash
+CUDA_VISIBLE_DEVICES="0" python convert.py [trained-model-path] [deploy-model-path-to-save] -a ResNet-18 -t OREPA
+```
+
+3. Evaluate with the converted model
+```bash
+CUDA_VISIBLE_DEVICES="0" python test.py deploy [deploy-model-path] -a ResNet-18 -t OREPA
 ```
 
 ### Transfer Learning on COCO and Cityscapes
-```bash
-CUDA_VISIBLE_DEVICES="0" python main.py -b 1 -n e --evaluate [enet-checkpoint-path]
-CUDA_VISIBLE_DEVICES="0" python main.py -b 1 -n pe --evaluate [penet-checkpoint-path]
-# test the trained model on the val_selection_cropped data
-```
-
+We use [mmdetection](https://github.com/open-mmlab/mmdetection) and [mmsegmentation](https://github.com/open-mmlab/mmsegmentation) tools on COCO and Cityscapes respectively. If you decide to use our pretrained model for downstream tasks, it is strongly suggested that the learning rate of the first stem layer should be fine adjusted, since the deep linear stem layer has a very different weight distribution from the vanilla one after ImageNet training. Contact @SixkplusJunyi (Junyi Feng) for more details on configurations and checkpoints of the reported ResNet-50-backbone models.
 
 
 ## Citation
