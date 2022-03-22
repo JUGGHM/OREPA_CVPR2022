@@ -84,7 +84,7 @@ CUDA_VISIBLE_DEVICES="0" python main.py -b 1 -n pe --evaluate [penet-checkpoint-
 ## Citation
 If you use our code or method in your work, please cite the following:
 
-	@article{hu22OREPA,
+	@inproceedings{hu22OREPA,
 		title={Online Convolutional Re-parameterization},
 		author={Mu Hu and Junyi Feng and Jiashen Hua and Baisheng Lai and Jianqiang Huang and Xiansheng Hua and Xiaojin Gong},
 		booktitle={CVPR},
