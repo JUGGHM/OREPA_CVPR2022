@@ -84,11 +84,11 @@ CUDA_VISIBLE_DEVICES="0" python main.py -b 1 -n pe --evaluate [penet-checkpoint-
 ## Citation
 If you use our code or method in your work, please cite the following:
 
-	@article{hu2020PENet,
-		title={Towards Precise and Efficient Image Guided Depth Completion},
-		author={Hu, Mu and Wang, Shuling and Li, Bin and Ning, Shiyu and Fan, Li and Gong, Xiaojin},
-		booktitle={ICRA},
-		year={2021}
+	@article{hu22OREPA,
+		title={Online Convolutional Re-parameterization},
+		author={Mu Hu and Junyi Feng and Jiashen Hua and Baisheng Lai and Jianqiang Huang and Xiansheng Hua and Xiaojin Gong},
+		booktitle={CVPR},
+		year={2022}
 	}
 
 If you use our code or method in your work, please cite the following:
