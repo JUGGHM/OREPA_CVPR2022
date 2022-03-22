@@ -6,7 +6,7 @@ Mu Hu, Junyi Feng, Jiashen Hua, Baisheng Lai, Jianqiang Huang, [Xiaojin Gong](ht
 + Re-parameterization means different architectures can be mutually converted through equivalent transformation of parameters. For example, a branch of $$1\times1$$ convolution and a branch of 3$\times$3 convolution,
 can be transferred into a single branch of 3$\times$3 convolution \cite{Ding21repvgg}.
 + TODO
-$\times$
+$\times\$
 
 ## Why we propose Online RE-PAram?
 + .
