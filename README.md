@@ -4,10 +4,10 @@ Mu Hu, Junyi Feng, Jiashen Hua, Baisheng Lai, Jianqiang Huang, [Xiaojin Gong](ht
 
 ## What is Structural Re-parameterization?
 + Re-parameterization (Re-param) means different architectures can be mutually converted through equivalent transformation of parameters. For example, a branch of 1x1 convolution and a branch of 3x3 convolution, can be transferred into a single branch of 3x3 convolution for faster inference.
-+ An applicative scenerio of
++ When the model for deployment is fixed, the task of re-param can be regarded as finding a complex training-time structure, which can be transfered back to the original one, for free performance improvements.
 
-## Why we propose **O**nline **RE**-**PA**ram?
-+ .
+## Why we propose Online RE-PAram? (OREPA)
++ While 
 + .
 
 ## Results
