@@ -7,7 +7,7 @@ Mu Hu, Junyi Feng, Jiashen Hua, Baisheng Lai, Jianqiang Huang, [Xiaojin Gong](ht
 + When the model for deployment is fixed, the task of re-param can be regarded as finding a complex training-time structure, which can be transfered back to the original one, for free performance improvements.
 
 ## Why we propose Online RE-PAram? (OREPA)
-+ While 
++ While
 + .
 
 ## Results
@@ -84,7 +84,7 @@ CUDA_VISIBLE_DEVICES="0" python main.py -b 1 -n pe --evaluate [penet-checkpoint-
 ## Citation
 If you use our code or method in your work, please cite the following:
 
-  @inproceedings{hu22OREPA,
+  @article{hu22OREPA,
     author = {Mu Hu and Junyi Feng and Jiashen Hua and Baisheng Lai and Jianqiang Huang and Xiansheng Hua and Xiaojin Gong},
     title = {Online Convolutional Re-parameterization.},
     booktitle = CVPR,
