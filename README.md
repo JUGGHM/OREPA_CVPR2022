@@ -34,7 +34,7 @@ Create a new issue for any code-related questions. Feel free to direct me as wel
 
 
 ## Dependency
-Our released implementation is tested on.
+Models released in this work is trained and tested on:
 + CentOS Linux
 + Python 3.8.8 (Anaconda 4.9.1)
 + PyTorch TODO / torchvision TODO
