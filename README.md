@@ -28,7 +28,9 @@ OREPA is a two-step pipeline.
 ## ImageNet Results
 <div align=center>
 <img src="https://github.com/JUGGHM/OREPA_CVPR2022/blob/main/images/imagenet1.PNG" width="500" />
+<img src="https://github.com/JUGGHM/OREPA_CVPR2022/blob/main/images/imagenet2.PNG" />
 </div>
+
 ![ImageNet2](https://github.com/JUGGHM/OREPA_CVPR2022/blob/main/images/imagenet2.PNG)
 
 Create a new issue for any code-related questions. Feel free to direct me as well at muhu@zju.edu.cn for any paper-related questions.
