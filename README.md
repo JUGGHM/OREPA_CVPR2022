@@ -27,7 +27,7 @@ OREPA is a two-step pipeline.
 
 ## ImageNet Results
 <div align=center>
-<img src="https://github.com/JUGGHM/OREPA_CVPR2022/blob/main/images/imagenet1.PNG" width="500" />
+<img src="https://github.com/JUGGHM/OREPA_CVPR2022/blob/main/images/imagenet1.PNG" width="450" />
 </div>
 
 ![ImageNet2](https://github.com/JUGGHM/OREPA_CVPR2022/blob/main/images/imagenet2.PNG)
@@ -95,13 +95,12 @@ CUDA_VISIBLE_DEVICES="0,1,2,3" python train.py -a RepVGG-A0 -t OREPA_VGG --data 
 ```
 
 ## Evaluation
-1. Use your self-trained model or our pretrained model.
+1. Use your self-trained model or our pretrained model
 ```bash
 CUDA_VISIBLE_DEVICES="0" python test.py train [trained-model-path] -a ResNet-18 -t OREPA
-# test the trained model on the val_selection_cropped data
 ```
 
-2. Convert the training-time models into inference-time
+2. Convert the training-time models into inference-time models
 ```bash
 CUDA_VISIBLE_DEVICES="0" python convert.py [trained-model-path] [deploy-model-path-to-save] -a ResNet-18 -t OREPA
 ```
