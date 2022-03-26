@@ -31,13 +31,13 @@ OREPA is a two-step pipeline.
 Create a new issue for any code-related questions. Feel free to direct me as well at muhu@zju.edu.cn for any paper-related questions.
 
 ## Contents
-1. [Dependency](#1)
-2. [Checkpoints](#2)
-3. [Training](#3)
-4. [Evaluation](#4)
-5. [Transfer Learning on COCO and Cityscapes](#5)
-6. [About Quantization and Gradient Tweaking](#6)
-7. [Citation](#7)
+1. [Dependency](#dependency)
+2. [Checkpoints](#checkpoints)
+3. [Training](#training)
+4. [Evaluation](#evaluation)
+5. [Transfer Learning on COCO and Cityscapes](#Transfer Learning on COCO and Cityscapes)
+6. [About Quantization and Gradient Tweaking](#About Quantization and Gradient Tweaking)
+7. [Citation](#citation)
 
 
 ## Dependency
