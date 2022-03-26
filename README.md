@@ -110,7 +110,8 @@ CUDA_VISIBLE_DEVICES="0" python test.py deploy [deploy-model-path] -a ResNet-18 
 ## Transfer Learning on COCO and Cityscapes
 We use [mmdetection](https://github.com/open-mmlab/mmdetection) and [mmsegmentation](https://github.com/open-mmlab/mmsegmentation) tools on COCO and Cityscapes respectively. If you decide to use our pretrained model for downstream tasks, it is strongly suggested that the learning rate of the first stem layer should be fine adjusted, since the deep linear stem layer has a very different weight distribution from the vanilla one after ImageNet training. Contact [@Sixkplus](https://github.com/Sixkplus) (Junyi Feng) for more details on configurations and checkpoints of the reported ResNet-50-backbone models.
 
-![COCO_CS](https://github.com/JUGGHM/OREPA_CVPR2022/blob/main/images/coco_cs.PNG)
+;![COCO_CS](https://github.com/JUGGHM/OREPA_CVPR2022/blob/main/images/coco_cs.PNG)
+<img src="https://github.com/JUGGHM/OREPA_CVPR2022/blob/main/images/coco_cs.PNG" width="301" />
 
 ## About Quantization and Gradient Tweaking
 For re-param models, special weight regulization strategies are required for furthur quantization. Meanwhile, dynamic gradient tweaking or differential searching methods might greatly boost the performance. Currently we have not deploy such techniques to OREPA yet. However such methods could be probably applied to our industrial usage in the future. For experience exchanging and sharing on such topics please contact [@Sixkplus](https://github.com/Sixkplus) (Junyi Feng).
