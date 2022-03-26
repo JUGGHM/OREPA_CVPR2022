@@ -14,7 +14,7 @@ Mu Hu, [Junyi Feng](https://github.com/Sixkplus), Jiashen Hua, Baisheng Lai, Jia
 + While current re-param blocks ([ACNet](https://github.com/DingXiaoH/ACNet), [ExpandNet](https://github.com/GUOShuxuan/expandnets), [ACNetv2](https://github.com/DingXiaoH/DiverseBranchBlock), *etc*) are still feasible for small models, more complecated design for further performance gain on larger models could lead to unaffordable training budgets.
 + We observed that batch normalization (norm) layers are significant in re-param blocks, while their training-time non-linearity prevents us from optimizing computational costs during training.
 
-<img src="https://github.com/JUGGHM/OREPA_CVPR2022/blob/main/images/budgets.png" width="500"><img src="https://github.com/JUGGHM/OREPA_CVPR2022/blob/main/images/norm.PNG" width="500">
+<img src="https://github.com/JUGGHM/OREPA_CVPR2022/blob/main/images/budgets.png" width="300"><img src="https://github.com/JUGGHM/OREPA_CVPR2022/blob/main/images/norm.PNG" width="300">
 
 ## What is OREPA?
 OREPA is a two-step pipeline.
@@ -27,7 +27,7 @@ OREPA is a two-step pipeline.
 + Through OREPA we could reduce the training budgets while keeping a comparable performance. Then we improve accuracy by additional components, which brings minor extra training costs since they are merged in an online scheme.
 + We theoretically present that the removal of branch-wise norm layers risks a multi-branch structure degrading into a single-branch one, indicating that the norm-scaling layer replacement is critical for protecting branch diversity.
 
-<img src="https://github.com/JUGGHM/OREPA_CVPR2022/blob/main/images/similarity.png" width="500"><img src="https://github.com/JUGGHM/OREPA_CVPR2022/blob/main/images/supp_grad.png" width="500">
+<img src="https://github.com/JUGGHM/OREPA_CVPR2022/blob/main/images/similarity.png" width="300"><img src="https://github.com/JUGGHM/OREPA_CVPR2022/blob/main/images/supp_grad.png" width="300">
 
 ## ImageNet Results
 <div align=center>
