@@ -35,8 +35,8 @@ Create a new issue for any code-related questions. Feel free to direct me as wel
 2. [Checkpoints](#checkpoints)
 3. [Training](#training)
 4. [Evaluation](#evaluation)
-5. [Transfer Learning on COCO and Cityscapes](#Transfer Learning on COCO and Cityscapes)
-6. [About Quantization and Gradient Tweaking](#About Quantization and Gradient Tweaking)
+5. [Transfer Learning on COCO and Cityscapes](#transfer learning on coco and cityscapes)
+6. [About Quantization and Gradient Tweaking](#about quantization and gradient tweaking)
 7. [Citation](#citation)
 
 
@@ -90,7 +90,7 @@ CUDA_VISIBLE_DEVICES="0,1,2,3" python train.py -a RepVGG-A0 -t OREPA_VGG --data 
 # -t for re-param method (base, RepVGG, OREPA_VGG)
 ```
 
-## Evalution
+## Evaluation
 1. Use your self-trained model or our pretrained model.
 ```bash
 CUDA_VISIBLE_DEVICES="0" python test.py train [trained-model-path] -a ResNet-18 -t OREPA
