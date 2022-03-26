@@ -29,19 +29,20 @@ OREPA is a two-step pipeline.
 Create a new issue for any code-related questions. Feel free to direct me as well at muhu@zju.edu.cn for any paper-related questions.
 
 ## Contents
-1. [Dependency](#dependency)
-2. [Checkpoints](#trained-models)
-3. [Training](#commands)
-4. [Evaluation](#commands)
-5. [Transfer Learning](#commands)
-6. [Citation](#citation)
+1. [Dependency](#1)
+2. [Checkpoints](#2)
+3. [Training](#3)
+4. [Evaluation](#4)
+5. [Transfer Learning on COCO and Cityscapes](#5)
+6. [About Quantization and Gradient Tweaking](#6)
+7. [Citation](#7)
 
 
 ## Dependency
 Models released in this work is trained and tested on:
 + CentOS Linux
 + Python 3.8.8 (Anaconda 4.9.1)
-+ PyTorch TODO / torchvision TODO
++ PyTorch 1.9.0 / torchvision 0.10.0
 + NVIDIA CUDA 10.2
 + 4x NVIDIA V100 GPUs
 
@@ -51,7 +52,7 @@ pip install numpy matplotlib Pillow
 pip install scikit-image
 ```
 
-## Checkpoints (Pre-trained Models)
+## Checkpoints
 Download our pre-trained models with OREPA:
 - [ResNet-18]()
 - [ResNet-34]()
@@ -65,15 +66,13 @@ Download our pre-trained models with OREPA:
 
  Note that we don't need to decompress the pre-trained models. Just load the files of .pth.tar format directly.
 
-## Commands
+## Training
 A complete list of training options is available with
 ```bash
 python train.py -h
 python test.py -h
 python convert.py -h
 ```
-### Training
-![Training Pipeline](https://github.com/JUGGHM/PENet_ICRA2021/blob/main/images/Training.png "Training")
 
 1. Train ResNets (ResNeXt and WideResNet included)
 ```bash
@@ -89,7 +88,7 @@ CUDA_VISIBLE_DEVICES="0,1,2,3" python train.py -a RepVGG-A0 -t OREPA_VGG --data 
 # -t for re-param method (base, RepVGG, OREPA_VGG)
 ```
 
-### Evalution
+## Evalution
 1. Use your self-trained model or our pretrained model.
 ```bash
 CUDA_VISIBLE_DEVICES="0" python test.py train [trained-model-path] -a ResNet-18 -t OREPA
@@ -106,11 +105,11 @@ CUDA_VISIBLE_DEVICES="0" python convert.py [trained-model-path] [deploy-model-pa
 CUDA_VISIBLE_DEVICES="0" python test.py deploy [deploy-model-path] -a ResNet-18 -t OREPA
 ```
 
-### Transfer Learning
-1. On COCO and Cityscapes
+## Transfer Learning on COCO and Cityscapes
 We use [mmdetection](https://github.com/open-mmlab/mmdetection) and [mmsegmentation](https://github.com/open-mmlab/mmsegmentation) tools on COCO and Cityscapes respectively. If you decide to use our pretrained model for downstream tasks, it is strongly suggested that the learning rate of the first stem layer should be fine adjusted, since the deep linear stem layer has a very different weight distribution from the vanilla one after ImageNet training. Contact [@Sixkplus](https://github.com/Sixkplus) (Junyi Feng) for more details on configurations and checkpoints of the reported ResNet-50-backbone models.
 
-2. About Quantization and Gradient Clip
+## About Quantization and Gradient Tweaking
+For re-param models, special weight regulization strategies are required for furthur quantization. Meanwhile, dynamic gradient tweaking or differential searching methods might greatly boost the performance. Currently we have not deploy such techniques to OREPA yet. However such methods could be probably applied to our industrial usage in the future. For experience exchanging and sharing on such topics please contact [@Sixkplus](https://github.com/Sixkplus) (Junyi Feng).
 
 
 ## Citation
