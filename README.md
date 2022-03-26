@@ -17,6 +17,8 @@ OREPA is a two-step pipeline.
 + Linearization: Replace the branch-wise norm layers to scaling layers to enable the linear squeezing of a multi-branch/layer topology.
 + Squeezing: Squeeze the linearized block into a single layer, where the convolution upon feature maps is reduced from multiple times to one.
 
+![Overview](https://github.com/JUGGHM/OREPA_CVPR2022/blob/main/images/overview.png)
+
 ## How does OREPA work?
 + Through OREPA we could reduce the training budgets while keeping a comparable performance. Then we improve accuracy by additional components, which brings minor extra training costs since they are merged in an online scheme.
 + We theoretically present that the removal of branch-wise norm layers risks a multi-branch structure degrading into a single-branch one, indicating that the norm-scaling layer replacement is critical for protecting branch diversity.
@@ -60,7 +62,6 @@ Download our pre-trained models with OREPA:
 - [RepVGG-A2]()
 - [WideResNet-18(x2)]()
 - [ResNeXt-50]()
-- [MobileNet-V1]()
 
  Note that we don't need to decompress the pre-trained models. Just load the files of .pth.tar format directly.
 
@@ -105,8 +106,11 @@ CUDA_VISIBLE_DEVICES="0" python convert.py [trained-model-path] [deploy-model-pa
 CUDA_VISIBLE_DEVICES="0" python test.py deploy [deploy-model-path] -a ResNet-18 -t OREPA
 ```
 
-### Transfer Learning on COCO and Cityscapes
+### Transfer Learning
+1. On COCO and Cityscapes
 We use [mmdetection](https://github.com/open-mmlab/mmdetection) and [mmsegmentation](https://github.com/open-mmlab/mmsegmentation) tools on COCO and Cityscapes respectively. If you decide to use our pretrained model for downstream tasks, it is strongly suggested that the learning rate of the first stem layer should be fine adjusted, since the deep linear stem layer has a very different weight distribution from the vanilla one after ImageNet training. Contact [@Sixkplus](https://github.com/Sixkplus) (Junyi Feng) for more details on configurations and checkpoints of the reported ResNet-50-backbone models.
+
+2. About Quantization and Gradient Clip
 
 
 ## Citation
