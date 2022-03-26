@@ -6,7 +6,9 @@ Mu Hu, [Junyi Feng](https://github.com/Sixkplus), Jiashen Hua, Baisheng Lai, Jia
 + Re-parameterization (Re-param) means different architectures can be mutually converted through equivalent transformation of parameters. For example, a branch of 1x1 convolution and a branch of 3x3 convolution, can be transferred into a single branch of 3x3 convolution for faster inference.
 + When the model for deployment is fixed, the task of re-param can be regarded as finding a complex training-time structure, which can be transfered back to the original one, for free performance improvements.
 
+<div align=center>
 <img src="https://github.com/JUGGHM/OREPA_CVPR2022/blob/main/images/intro.png" width="600" />
+</div>
 
 ## Why do we propose Online RE-PAram? (OREPA)
 + While current re-param blocks ([ACNet](https://github.com/DingXiaoH/ACNet), [ExpandNet](https://github.com/GUOShuxuan/expandnets), [ACNetv2](https://github.com/DingXiaoH/DiverseBranchBlock), *etc*) are still feasible for small models, more complecated design for further performance gain on larger models could lead to unaffordable training budgets.
@@ -24,8 +26,9 @@ OREPA is a two-step pipeline.
 + We theoretically present that the removal of branch-wise norm layers risks a multi-branch structure degrading into a single-branch one, indicating that the norm-scaling layer replacement is critical for protecting branch diversity.
 
 ## ImageNet Results
+<div align=center>
 <img src="https://github.com/JUGGHM/OREPA_CVPR2022/blob/main/images/imagenet1.PNG" width="500" />
-
+</div>
 ![ImageNet2](https://github.com/JUGGHM/OREPA_CVPR2022/blob/main/images/imagenet2.PNG)
 
 Create a new issue for any code-related questions. Feel free to direct me as well at muhu@zju.edu.cn for any paper-related questions.
@@ -110,7 +113,9 @@ CUDA_VISIBLE_DEVICES="0" python test.py deploy [deploy-model-path] -a ResNet-18 
 ## Transfer Learning on COCO and Cityscapes
 We use [mmdetection](https://github.com/open-mmlab/mmdetection) and [mmsegmentation](https://github.com/open-mmlab/mmsegmentation) tools on COCO and Cityscapes respectively. If you decide to use our pretrained model for downstream tasks, it is strongly suggested that the learning rate of the first stem layer should be fine adjusted, since the deep linear stem layer has a very different weight distribution from the vanilla one after ImageNet training. Contact [@Sixkplus](https://github.com/Sixkplus) (Junyi Feng) for more details on configurations and checkpoints of the reported ResNet-50-backbone models.
 
+<div align=center>
 <img src="https://github.com/JUGGHM/OREPA_CVPR2022/blob/main/images/coco_cs.PNG" width="500" />
+</div>
 
 ## About Quantization and Gradient Tweaking
 For re-param models, special weight regulization strategies are required for furthur quantization. Meanwhile, dynamic gradient tweaking or differential searching methods might greatly boost the performance. Currently we have not deploy such techniques to OREPA yet. However such methods could be probably applied to our industrial usage in the future. For experience exchanging and sharing on such topics please contact [@Sixkplus](https://github.com/Sixkplus) (Junyi Feng).
