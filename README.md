@@ -35,8 +35,8 @@ Create a new issue for any code-related questions. Feel free to direct me as wel
 2. [Checkpoints](#checkpoints)
 3. [Training](#training)
 4. [Evaluation](#evaluation)
-5. [Transfer Learning on COCO and Cityscapes](#transferlearningoncocoandcityscapes)
-6. [About Quantization and Gradient Tweaking](#aboutquantizationandgradienttweaking)
+5. [Transfer Learning on COCO and Cityscapes](#transfer-learning-on-coco-and-cityscapes)
+6. [About Quantization and Gradient Tweaking](#about-quantization-and-gradient-tweaking)
 7. [Citation](#citation)
 
 
