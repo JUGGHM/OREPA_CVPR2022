@@ -64,15 +64,15 @@ pip install scikit-image
 
 ## Checkpoints
 Download our pre-trained models with OREPA:
-- [ResNet-18]()
-- [ResNet-34]()
-- [ResNet-50]()
-- [ResNet-101]()
-- [RepVGG-A0]()
-- [RepVGG-A1]()
-- [RepVGG-A2]()
-- [WideResNet-18(x2)]()
-- [ResNeXt-50]()
+- [ResNet-18](https://drive.google.com/file/d/1Z0cfmxLLWD2xjgUXpE2Y_4vxS4ij16Sx/view?usp=sharing)
+- [ResNet-34](https://drive.google.com/file/d/1tOC4yoslHF829Yb66_eE4qsFoazf6uoY/view?usp=sharing)
+- [ResNet-50](https://drive.google.com/file/d/1Jn92wGHlFzkPjQxAmYdRU_EbSRQjsw0v/view?usp=sharing)
+- [ResNet-101](https://drive.google.com/file/d/10L4fwYlB21vlMKOGIyXdlGBbf3l8nflI/view?usp=sharing)
+- [RepVGG-A0](https://drive.google.com/file/d/1r674bxWKL5dwDA8OPEuGWN8zbiUGkqsx/view?usp=sharing)
+- [RepVGG-A1](https://drive.google.com/file/d/1NVRn8Xave-0jY3R0xAXCShdBcML6f-3q/view?usp=sharing)
+- [RepVGG-A2](https://drive.google.com/file/d/1ImHkTct0ACDtOw8sPgKhqerBFigg32s3/view?usp=sharing)
+- [WideResNet-18(x2)](https://drive.google.com/file/d/1gseMlq9JGntggyZoK_Bjt7xiSPNs5deF/view?usp=sharing)
+- [ResNeXt-50](https://drive.google.com/file/d/1p_eZDhMHQ_xmfXd8Z1RZnWfgwUbi7WH-/view?usp=sharing)
 
  Note that we don't need to decompress the pre-trained models. Just load the files of .pth.tar format directly.
 
