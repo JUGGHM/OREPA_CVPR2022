@@ -118,7 +118,7 @@ CUDA_VISIBLE_DEVICES="0" python test.py deploy [deploy-model-path] -a ResNet-18 
 We use [mmdetection](https://github.com/open-mmlab/mmdetection) and [mmsegmentation](https://github.com/open-mmlab/mmsegmentation) tools on COCO and Cityscapes respectively. If you decide to use our pretrained model for downstream tasks, it is strongly suggested that the learning rate of the first stem layer should be fine adjusted, since the deep linear stem layer has a very different weight distribution from the vanilla one after ImageNet training. Contact [@Sixkplus](https://github.com/Sixkplus) (Junyi Feng) for more details on configurations and checkpoints of the reported ResNet-50-backbone models.
 
 <div align=center>
-<img src="https://github.com/JUGGHM/OREPA_CVPR2022/blob/main/images/coco_cs.PNG" width="500" />
+<img src="https://github.com/JUGGHM/OREPA_CVPR2022/blob/main/images/coco_cs.PNG" width="400" />
 </div>
 
 ## About Quantization and Gradient Tweaking
